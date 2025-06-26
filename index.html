@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tech News</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tech News Today</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
@@ -18,17 +18,14 @@
       padding: 20px;
       text-align: center;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
     .hero {
       text-align: center;
-      padding: 30px;
+      padding: 40px 20px;
       background: #fff;
     }
     .hero img {
-      max-width: 100%;
+      width: 100%;
+      max-width: 800px;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
@@ -44,6 +41,51 @@
     .hero button:hover {
       background: #0056b3;
     }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 40px 20px;
+      background: #fff;
+    }
+    .card {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .card img {
+      width: 100%;
+      border-radius: 6px;
+    }
+    .card h3 {
+      margin-top: 15px;
+      font-size: 1.1rem;
+    }
+
+    .newsletter {
+      padding: 40px 20px;
+      background: #007BFF;
+      color: white;
+      text-align: center;
+    }
+    .newsletter input {
+      padding: 10px;
+      width: 250px;
+      border: none;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+    .newsletter button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background: #28a745;
+      color: white;
+      cursor: pointer;
+    }
+
     .contact {
       background: #fff;
       padding: 40px;
@@ -52,26 +94,28 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       border-radius: 10px;
     }
-    .contact h2 {
-      margin-bottom: 20px;
-    }
     .contact input, .contact textarea {
       width: 100%;
       padding: 10px;
       margin: 10px 0;
-      border: 1px solid #ddd;
-      border-radius: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
     }
+
     .contact button {
       background: #28a745;
       color: white;
-      border: none;
       padding: 12px 20px;
-      border-radius: 5px;
+      border: none;
+      border-radius: 6px;
       cursor: pointer;
     }
-    .contact button:hover {
-      background: #218838;
+
+    footer {
+      background: #20232a;
+      color: white;
+      padding: 20px;
+      text-align: center;
     }
   </style>
 </head>
@@ -81,10 +125,35 @@
   </header>
 
   <section class="hero">
-    <h2>Latest Trends in AI and Technology</h2>
-    <img src="https://source.unsplash.com/800x400/?technology,ai" alt="AI Tech Image" />
+    <h2>Welcome to the Future of Technology</h2>
+    <img src="https://source.unsplash.com/800x400/?technology,ai" alt="AI Banner"/>
     <br />
-    <button onclick="dataLayer.push({'event': 'cta_button_click'}); alert('Thanks for your interest!');">Read More</button>
+    <button onclick="dataLayer.push({event: 'hero_cta_click'}); alert('Thanks for your interest!')">Explore Now</button>
+  </section>
+
+  <section class="cards">
+    <div class="card">
+      <img src="https://source.unsplash.com/400x200/?robotics" alt="Robotics" />
+      <h3>AI is Taking Over Manual Tasks</h3>
+      <p>Automation and robotics are reshaping industries.</p>
+    </div>
+    <div class="card">
+      <img src="https://source.unsplash.com/400x200/?cybersecurity" alt="Cyber Security" />
+      <h3>Cyber Security is the New Priority</h3>
+      <p>Every company is investing in cyber safety more than ever.</p>
+    </div>
+    <div class="card">
+      <img src="https://source.unsplash.com/400x200/?blockchain" alt="Blockchain" />
+      <h3>Blockchain Beyond Crypto</h3>
+      <p>Use cases now include voting systems, contracts, and logistics.</p>
+    </div>
+  </section>
+
+  <section class="newsletter">
+    <h2>Subscribe to our newsletter</h2>
+    <p>Stay updated with the latest in tech!</p>
+    <input type="email" placeholder="Enter your email" />
+    <button onclick="dataLayer.push({event: 'newsletter_signup'}); alert('Subscribed!')">Subscribe</button>
   </section>
 
   <section class="contact">
@@ -92,13 +161,17 @@
     <form id="contactForm" onsubmit="handleSubmit(event)">
       <input type="text" id="name" name="name" placeholder="Your Name" required />
       <input type="email" id="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" id="message" rows="5" placeholder="Your Message" required></textarea>
+      <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
   </section>
 
+  <footer>
+    <p>© 2025 TechNews. All rights reserved.</p>
+    <p><a href="mailto:contact@technews.com" style="color:#ccc">contact@technews.com</a></p>
+  </footer>
+
   <script>
-    // Initialize dataLayer
     window.dataLayer = window.dataLayer || [];
 
     function handleSubmit(e) {
@@ -117,7 +190,7 @@
         }
       });
 
-      alert("Thanks for contacting us!");
+      alert("Message sent! We'll get back to you.");
       e.target.reset();
     }
   </script>
