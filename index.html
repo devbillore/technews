@@ -1,73 +1,125 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My GitHub Pages Site</title>
-
-  <!-- Google Tag Manager -->
-  <script>
-    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-XXXXXXX'); // 👈 Replace with your GTM ID
-  </script>
-  <!-- End Google Tag Manager -->
-
-  <!-- GA4 fallback (in case you're not using GTM for GA4) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> <!-- 👈 Replace with your GA4 ID -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX'); // 👈 Replace with your GA4 ID
-  </script>
-
+  <title>Tech News</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: sans-serif;
-      background-color: #f7f7f7;
+      font-family: 'Poppins', sans-serif;
       margin: 0;
-      padding: 0;
-      text-align: center;
+      background: #f4f4f4;
+      color: #333;
     }
     header {
-      background: #222;
+      background: #20232a;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    .hero {
+      text-align: center;
+      padding: 30px;
+      background: #fff;
+    }
+    .hero img {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .hero button {
+      margin-top: 20px;
+      padding: 10px 25px;
+      background: #007BFF;
       color: white;
-      padding: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
-    main {
-      padding: 2rem;
+    .hero button:hover {
+      background: #0056b3;
     }
-    footer {
-      background: #ddd;
-      padding: 1rem;
-      margin-top: 2rem;
+    .contact {
+      background: #fff;
+      padding: 40px;
+      max-width: 500px;
+      margin: 40px auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+    .contact h2 {
+      margin-bottom: 20px;
+    }
+    .contact input, .contact textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .contact button {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .contact button:hover {
+      background: #218838;
     }
   </style>
 </head>
-
 <body>
-
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-
   <header>
-    <h1>Welcome to My GitHub Pages Site</h1>
-    <p>Tracking enabled via GA4 & GTM ✅</p>
+    <h1>Tech News Today</h1>
   </header>
 
-  <main>
-    <h2>This is a demo site</h2>
-    <p>Edit this content and style as you like.</p>
-  </main>
+  <section class="hero">
+    <h2>Latest Trends in AI and Technology</h2>
+    <img src="https://source.unsplash.com/800x400/?technology,ai" alt="AI Tech Image" />
+    <br />
+    <button onclick="dataLayer.push({'event': 'cta_button_click'}); alert('Thanks for your interest!');">Read More</button>
+  </section>
 
-  <footer>
-    <p>&copy; 2025 My Website. All rights reserved.</p>
-  </footer>
+  <section class="contact">
+    <h2>Contact Us</h2>
+    <form id="contactForm" onsubmit="handleSubmit(event)">
+      <input type="text" id="name" name="name" placeholder="Your Name" required />
+      <input type="email" id="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" id="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
 
+  <script>
+    // Initialize dataLayer
+    window.dataLayer = window.dataLayer || [];
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+
+      dataLayer.push({
+        event: "form_submit",
+        form_name: "contact_form",
+        form_data: {
+          name: name,
+          email: email,
+          message: message
+        }
+      });
+
+      alert("Thanks for contacting us!");
+      e.target.reset();
+    }
+  </script>
 </body>
 </html>
