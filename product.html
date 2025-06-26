@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Detail</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    // Fire view_item event on product detail load
+    window.addEventListener("DOMContentLoaded", function () {
+      const params = new URLSearchParams(window.location.search);
+      const productId = params.get("p") || "1";
+
+      const product = {
+        "1": {
+          item_id: "p1",
+          item_name: "Smart AI Speaker",
+          item_category: "Electronics"
+        },
+        "2": {
+          item_id: "p2",
+          item_name: "NextGen Laptop",
+          item_category: "Computers"
+        }
+      }[productId];
+
+      if (product) {
+        dataLayer.push({
+          event: "view_item",
+          ecommerce: {
+            items: [product]
+          }
+        });
+
+        document.getElementById("product-title").textContent = product.item_name;
+        document.getElementById("product-category").textContent = product.item_category;
+      }
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <h1>TechShop - Product</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart</a>
+      <a href="checkout.html">Checkout</a>
+    </nav>
+  </header>
+
+  <main style="text-align:center; padding:40px;">
+    <h2 id="product-title">Loading product...</h2>
+    <p>Category: <span id="product-category"></span></p>
+    <button onclick="addToCart()">Add to Cart</button>
+  </main>
+
+  <script>
+    function addToCart() {
+      const title = document.getElementById("product-title").textContent;
+      const category = document.getElementById("product-category").textContent;
+
+      dataLayer.push({
+        event: "add_to_cart",
+        ecommerce: {
+          items: [
+            {
+              item_id: title === "Smart AI Speaker" ? "p1" : "p2",
+              item_name: title,
+              item_category: category,
+              quantity: 1
+            }
+          ]
+        }
+      });
+
+      alert("Product added to cart!");
+    }
+  </script>
+</body>
+</html>
