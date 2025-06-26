@@ -1,67 +1,32 @@
+<!-- index.html (Homepage: view_item_list) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TechNews | Stay Ahead</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <!-- Hero Section -->
-  <section id="hero" style="background:#eef6ff; padding:30px; text-align:center;">
-    <h1>Welcome to TechNews 🚀</h1>
-    <p>Explore the future of technology with our expert articles.</p>
-    <button onclick="trackHeroCTA()" style="padding:10px 20px; font-size:16px;">Explore Now</button>
-  </section>
-
-  <!-- Blog Cards Section -->
-  <section id="blogs" style="display:flex; gap:20px; padding:30px;">
-    <div style="border:1px solid #ccc; padding:15px; width:200px;">
-      <h3>AI is Reshaping Our World</h3>
-      <p>Artificial Intelligence is evolving faster than ever.</p>
-    </div>
-    <div style="border:1px solid #ccc; padding:15px; width:200px;">
-      <h3>Cybersecurity in 2025</h3>
-      <p>How to protect your data in a hyper-connected future.</p>
-    </div>
-  </section>
-
-  <!-- GTM + GA4 Script -->
+  <title>TechShop - Homepage</title>
+  <link rel="stylesheet" href="style.css">
   <script>
     window.dataLayer = window.dataLayer || [];
 
-    // 1. CTA Button Click (select_promotion)
-    function trackHeroCTA() {
-      dataLayer.push({
-        event: "select_promotion",
-        ecommerce: {
-          promotion_name: "Hero Banner",
-          creative_name: "Explore Now",
-          creative_slot: "header",
-          location_id: "hero_section"
-        }
-      });
-      alert("Thanks for your interest!");
-    }
-
-    // 2. Page Load Event (view_item_list)
-    window.addEventListener("DOMContentLoaded", () => {
+    // Send view_item_list when homepage loads
+    window.addEventListener("DOMContentLoaded", function () {
       dataLayer.push({
         event: "view_item_list",
         ecommerce: {
-          item_list_id: "tech_blog_home",
-          item_list_name: "Tech Cards",
+          item_list_id: "home_list",
+          item_list_name: "Homepage Products",
           items: [
             {
-              item_id: "ai-news-1",
-              item_name: "AI is Reshaping Our World",
-              item_category: "AI",
+              item_id: "p1",
+              item_name: "Smart AI Speaker",
+              item_category: "Electronics",
               index: 0
             },
             {
-              item_id: "cyber-2025",
-              item_name: "Cybersecurity in 2025",
-              item_category: "Cybersecurity",
+              item_id: "p2",
+              item_name: "NextGen Laptop",
+              item_category: "Computers",
               index: 1
             }
           ]
@@ -69,5 +34,31 @@
       });
     });
   </script>
+</head>
+<body>
+  <header>
+    <h1>TechShop 🛍️</h1>
+    <nav>
+      <a href="product.html">Product</a>
+      <a href="cart.html">Cart</a>
+      <a href="checkout.html">Checkout</a>
+      <a href="purchase.html">Thank You</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="products">
+      <div class="product-card">
+        <h2>Smart AI Speaker</h2>
+        <a href="product.html?p=1">View Details</a>
+      </div>
+      <div class="product-card">
+        <h2>NextGen Laptop</h2>
+        <a href="product.html?p=2">View Details</a>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
+
+<!-- Additional files: product.html, cart.html, checkout.html, purchase.html, style.css -->
