@@ -1,34 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TechNews - Your Daily Dose of Tech</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<script>
+  window.dataLayer = window.dataLayer || [];
 
-  <!-- ✅ GTM Tag Placeholder -->
-  <!-- Paste your GTM script here if you have one -->
-  <!-- <script>/* GTM HERE */</script> -->
+  // 1. HERO BUTTON (CTA click = select_promotion)
+  function trackHeroCTA() {
+    dataLayer.push({
+      event: "select_promotion",
+      ecommerce: {
+        promotion_name: "Hero Banner",
+        creative_name: "Explore Now",
+        creative_slot: "header",
+        location_id: "hero_section"
+      }
+    });
+    alert("Thanks for your interest!");
+  }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #f9fbff;
-      color: #333;
-    }
-
-    header {
-      background: linear-gradient(to right, #6ec6ff, #2196f3);
-      padding: 60px 20px;
-      color: white;
-      text-align: center;
-    }
-
-    header h1 {
-      font-size: 2.
+  // 2. BLOG CARDS VIEW (homepage load = view_item_list)
+  window.addEventListener("DOMContentLoaded", () => {
+    dataLayer.push({
+      event: "view_item_list",
+      ecommerce: {
+        item_list_id: "tech_blog_home",
+        item_list_name: "Tech Cards",
+        items: [
+          {
+            item_id: "ai-news-1",
+            item_name: "AI is Reshaping Our World",
+            item_category: "AI",
+            index: 0
+          },
+          {
+            item_id: "cyber-2025",
+            item_name: "Cybersecurity in 2025",
