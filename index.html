@@ -1,34 +1,73 @@
-<script>
-  window.dataLayer = window.dataLayer || [];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechNews | Stay Ahead</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Hero Section -->
+  <section id="hero" style="background:#eef6ff; padding:30px; text-align:center;">
+    <h1>Welcome to TechNews 🚀</h1>
+    <p>Explore the future of technology with our expert articles.</p>
+    <button onclick="trackHeroCTA()" style="padding:10px 20px; font-size:16px;">Explore Now</button>
+  </section>
 
-  // 1. HERO BUTTON (CTA click = select_promotion)
-  function trackHeroCTA() {
-    dataLayer.push({
-      event: "select_promotion",
-      ecommerce: {
-        promotion_name: "Hero Banner",
-        creative_name: "Explore Now",
-        creative_slot: "header",
-        location_id: "hero_section"
-      }
+  <!-- Blog Cards Section -->
+  <section id="blogs" style="display:flex; gap:20px; padding:30px;">
+    <div style="border:1px solid #ccc; padding:15px; width:200px;">
+      <h3>AI is Reshaping Our World</h3>
+      <p>Artificial Intelligence is evolving faster than ever.</p>
+    </div>
+    <div style="border:1px solid #ccc; padding:15px; width:200px;">
+      <h3>Cybersecurity in 2025</h3>
+      <p>How to protect your data in a hyper-connected future.</p>
+    </div>
+  </section>
+
+  <!-- GTM + GA4 Script -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    // 1. CTA Button Click (select_promotion)
+    function trackHeroCTA() {
+      dataLayer.push({
+        event: "select_promotion",
+        ecommerce: {
+          promotion_name: "Hero Banner",
+          creative_name: "Explore Now",
+          creative_slot: "header",
+          location_id: "hero_section"
+        }
+      });
+      alert("Thanks for your interest!");
+    }
+
+    // 2. Page Load Event (view_item_list)
+    window.addEventListener("DOMContentLoaded", () => {
+      dataLayer.push({
+        event: "view_item_list",
+        ecommerce: {
+          item_list_id: "tech_blog_home",
+          item_list_name: "Tech Cards",
+          items: [
+            {
+              item_id: "ai-news-1",
+              item_name: "AI is Reshaping Our World",
+              item_category: "AI",
+              index: 0
+            },
+            {
+              item_id: "cyber-2025",
+              item_name: "Cybersecurity in 2025",
+              item_category: "Cybersecurity",
+              index: 1
+            }
+          ]
+        }
+      });
     });
-    alert("Thanks for your interest!");
-  }
-
-  // 2. BLOG CARDS VIEW (homepage load = view_item_list)
-  window.addEventListener("DOMContentLoaded", () => {
-    dataLayer.push({
-      event: "view_item_list",
-      ecommerce: {
-        item_list_id: "tech_blog_home",
-        item_list_name: "Tech Cards",
-        items: [
-          {
-            item_id: "ai-news-1",
-            item_name: "AI is Reshaping Our World",
-            item_category: "AI",
-            index: 0
-          },
-          {
-            item_id: "cyber-2025",
-            item_name: "Cybersecurity in 2025",
+  </script>
+</body>
+</html>
