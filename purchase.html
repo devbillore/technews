@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Order Confirmed - TechShop</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .thank-you {
+      background: #e6f7ff;
+      margin: 50px auto;
+      max-width: 500px;
+      padding: 30px;
+      text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+  </style>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    window.addEventListener("DOMContentLoaded", function () {
+      dataLayer.push({
+        event: "purchase",
+        ecommerce: {
+          transaction_id: "T123456",
+          value: 3500,
+          currency: "INR",
+          tax: 0,
+          shipping: 0,
+          items: [
+            {
+              item_id: "p1",
+              item_name: "Smart AI Speaker",
+              item_category: "Electronics",
+              quantity: 1,
+              price: 1500
+            },
+            {
+              item_id: "p2",
+              item_name: "NextGen Laptop",
+              item_category: "Computers",
+              quantity: 1,
+              price: 2000
+            }
+          ]
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Thank You 🎉</h1>
+    <nav>
+      <a href="index.html">Back to Home</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="thank-you">
+      <h2>Your order has been placed successfully!</h2>
+      <p>Order ID: <strong>T123456</strong></p>
+      <p>You will receive a confirmation email shortly.</p>
+    </div>
+  </main>
+</body>
+</html>
