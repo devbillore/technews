@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart - TechShop</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      background: white;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .cart-item button {
+      background: #ff4d4d;
+      border: none;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function removeFromCart(itemId, itemName, itemCategory) {
+      dataLayer.push({
+        event: "remove_from_cart",
+        ecommerce: {
+          items: [
+            {
+              item_id: itemId,
+              item_name: itemName,
+              item_category: itemCategory,
+              quantity: 1
+            }
+          ]
+        }
+      });
+      alert(itemName + " removed from cart.");
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Your Cart 🛒</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="checkout.html">Checkout</a>
+    </nav>
+  </header>
+
+  <main style="padding: 30px;">
+    <div class="cart-item">
+      <div>
+        <strong>Smart AI Speaker</strong><br>
+        <small>Category: Electronics</small>
+      </div>
+      <button onclick="removeFromCart('p1', 'Smart AI Speaker', 'Electronics')">Remove</button>
+    </div>
+
+    <div class="cart-item">
+      <div>
+        <strong>NextGen Laptop</strong><br>
+        <small>Category: Computers</small>
+      </div>
+      <button onclick="removeFromCart('p2', 'NextGen Laptop', 'Computers')">Remove</button>
+    </div>
+  </main>
+</body>
+</html>
