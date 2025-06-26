@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout - TechShop</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    form {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 500px;
+      margin: 50px auto;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    form input, form button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    form button {
+      background: #0077cc;
+      color: white;
+      border: none;
+    }
+  </style>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    // Fire begin_checkout when page loads
+    window.addEventListener("DOMContentLoaded", function () {
+      dataLayer.push({
+        event: "begin_checkout",
+        ecommerce: {
+          items: [
+            {
+              item_id: "p1",
+              item_name: "Smart AI Speaker",
+              item_category: "Electronics",
+              quantity: 1
+            },
+            {
+              item_id: "p2",
+              item_name: "NextGen Laptop",
+              item_category: "Computers",
+              quantity: 1
+            }
+          ]
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Checkout 🧾</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="cart.html">Cart</a>
+    </nav>
+  </header>
+
+  <main>
+    <form action="purchase.html" method="GET">
+      <h2>Shipping Information</h2>
+      <input type="text" name="name" placeholder="Full Name" required />
+      <input type="text" name="address" placeholder="Address" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <button type="submit">Place Order</button>
+    </form>
+  </main>
+</body>
+</html>
